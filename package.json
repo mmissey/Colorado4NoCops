@@ -1,0 +1,29 @@
+{
+  "name": "4nocops",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "stylus": "^0.54.8",
+    "twilio": "^3.49.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmissey/Colorado4NoCops.git"
+  },
+  "author": "Marc Missey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmissey/Colorado4NoCops/issues"
+  },
+  "homepage": "https://github.com/mmissey/Colorado4NoCops#readme"
+}
