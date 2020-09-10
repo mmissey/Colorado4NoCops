@@ -1,6 +1,7 @@
 version: '3.3'
 services:
   colorado4nocops:
+    container_name: colorado4nocops
     build:
       context: .
     ports:

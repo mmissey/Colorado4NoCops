@@ -11,6 +11,8 @@ const noCopsRouter = require('./noCopsRouter');
 const router = new Router();
 const app = express();
 
+const BASE_URL = process.env.BASE || '';
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -23,11 +25,11 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // GET: / - home page
-router.get('/', (req, res) => {
+router.get(BASE_URL + '/', (req, res) => {
   res.render('index');
 });
 
-router.use('/nocops', twilio.webhook({validate: true}), noCopsRouter);
+router.use(BASE_URL + '/nocops', twilio.webhook({validate: true}), noCopsRouter);
 
 app.use(router);
 
