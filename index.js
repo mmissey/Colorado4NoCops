@@ -27,7 +27,7 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
-router.use('/nocops', twilio.webhook({validate: false}), noCopsRouter);
+router.use('/nocops', twilio.webhook({validate: true}), noCopsRouter);
 
 app.use(router);
 

@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  colorado4nocops:
+    build:
+      context: .
+    ports:
+      - 27529:8080

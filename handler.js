@@ -119,11 +119,22 @@ function takeAction(service, digit, sid, phone) {
         twiml.dial(service.phone);
         break;
       case "3":
-        const sms = "**" + service.name + "** " + " -- " + service.description + "  -- " + service.hours + " -- " + service.phone + " -- " + service.website;
+        let sms = "**" + service.name + "** " + " -- " + service.description + "  -- " + service.hours + " -- " + service.phone + " -- " + service.website;
+        let sms2 = "";
+        if(sms.length > 153){
+          sms2 = sms.substr(153)
+          sms = sms.substr(0,152);
+        }
         twiml.sms({
           from: '+14354662677',
           to: phone,
-      }, sms);
+        }, sms);
+        if(sms2){
+          twiml.sms({
+            from: '+14354662677',
+            to: phone,
+          }, sms2);
+        }
       break;
     }
     
