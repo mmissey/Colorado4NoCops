@@ -4,12 +4,13 @@ const services = require('./services').services;
 const serviceTypes = Object.keys(services);
 
 let currentService = {};
+const BASE_URL = process.env.BASE || '';
 
 exports.welcome = function welcome() {
   const voiceResponse = new VoiceResponse();
 
   const gather = voiceResponse.gather({
-    action: '/nocops/menu',
+    action: BASE_URL + '/nocops/menu',
     numDigits: '1',
     method: 'POST',
   });
@@ -39,7 +40,7 @@ function giveServiceOptions(key, sid) {
   const twiml = new VoiceResponse();
   currentService[sid] = key;
   const gather = twiml.gather({
-    action: '/noCops/serviceOptions',
+    action: BASE_URL + '/nocops/serviceOptions',
     numDigits: '1',
     method: 'POST',
   });
@@ -72,7 +73,7 @@ function giveServiceDescription(service, sid) {
   const twiml = new VoiceResponse();
 
   const gather = twiml.gather({
-    action: '/noCops/action',
+    action: BASE_URL + '/noCops/action',
     numDigits: '1',
     method: 'POST',
   });
@@ -112,7 +113,7 @@ function takeAction(service, digit, sid, phone) {
       case "1":
         resp = "Phone number: " + service.phone;
         twiml.say(resp);
-        twiml.redirect('/nocops/welcome');
+        twiml.redirect(BASE_URL + '/nocops/welcome');
         break;
 
       case "2":
@@ -150,7 +151,7 @@ function redirectWelcome() {
 
   twiml.say('Returning to the main menu');
 
-  twiml.redirect('/nocops/welcome');
+  twiml.redirect(BASE_URL + '/nocops/welcome');
 
   return twiml.toString();
 }

@@ -30,7 +30,7 @@ router.get(BASE_URL + '/', (req, res) => {
 });
 
 router.use(BASE_URL + '/nocops', twilio.webhook({validate: true}), noCopsRouter);
-
+console.log("using", BASE_URL + '/nocops');
 app.use(router);
 
 app.use(function(req, res, next) {
